@@ -11,7 +11,11 @@ import CreateUser from "../pages/CreateUser";
 export const route = [
   {
     path: "/",
-    element: <HomePage />,
+    element: (
+      <ProtectedRoute>
+        <HomePage />
+      </ProtectedRoute>
+    ),
   },
   {
     path: "/login",
