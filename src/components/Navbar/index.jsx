@@ -9,6 +9,8 @@ const Navbar = () => {
     navigate("/login");
   };
 
+  const token = localStorage.getItem("access_token");
+
   return (
     <div className="flex justify-center gap-5 my-5">
       <Link to="/">
@@ -18,15 +20,19 @@ const Navbar = () => {
       </Link>
       <Link to="/listuser">
         <button className="w-20 h-10 text-black bg-blue-300 rounded">
-          Menu
+          List User
         </button>
       </Link>
+      {token ? (
+        ""
+      ) : (
+        <Link to="/register">
+          <button className="w-20 h-10 text-black bg-blue-300 rounded">
+            Register
+          </button>
+        </Link>
+      )}
 
-      <Link to="/register">
-        <button className="w-20 h-10 text-black bg-blue-300 rounded">
-          Register
-        </button>
-      </Link>
       {localStorage.getItem("access_token") ? (
         <button
           className="w-20 h-10 text-black bg-red-300 rounded"

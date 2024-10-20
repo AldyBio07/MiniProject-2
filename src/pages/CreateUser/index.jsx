@@ -3,10 +3,10 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar";
 import { useNavigate } from "react-router-dom";
 
-const Register = () => {
+const Create = () => {
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    name: "",
+    job: "",
   });
   const navigate = useNavigate();
   const [success, setSuccess] = useState(false);
@@ -21,27 +21,25 @@ const Register = () => {
 
   const handleSubmit = () => {
     const payload = {
-      ...form,
-      roleId: parseInt(form.roleId),
+      name: form.name,
+      job: form.job,
     };
 
     axios
-      .post("https://reqres.in/api/register", payload)
+      .post("https://reqres.in/api/users", payload)
       .then((res) => {
-        const token = res?.data?.data?.token;
-        localStorage.setItem("access_token", token);
-
         setSuccess(true);
         setError(false);
+        console.log(res);
+        alert("Create Success");
 
         setTimeout(() => {
-          navigate("/");
+          navigate("/listuser");
         }, 3000);
       })
       .catch((err) => {
         console.log("err", err?.response);
-        setError(true);
-        alert(err?.response.data.error);
+
         setSuccess("");
       });
   };
@@ -49,29 +47,22 @@ const Register = () => {
   return (
     <div>
       <Navbar />
-      {success && <p>Register Success</p>}
+      {success && <p>Create Success</p>}
       {error && <p>{error}</p>}
       <input
-        type="test"
-        value={form.email}
-        name="email"
+        type="text"
+        name="name"
         onChange={handleChange}
-        placeholder="email"
+        placeholder="name"
       />
-      <input
-        type="password"
-        value={form.password}
-        name="password"
-        onChange={handleChange}
-        placeholder="password"
-      />
+      <input type="text" name="job" onChange={handleChange} placeholder="job" />
 
-      <button onClick={handleSubmit}>Register</button>
+      <button onClick={handleSubmit}>Create</button>
     </div>
   );
 };
 
-export default Register;
+export default Create;
 
 // protectedRoute
 // Delete

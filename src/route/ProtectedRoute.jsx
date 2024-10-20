@@ -8,10 +8,7 @@ const ProtectedRoute = ({ children }) => {
 
   return (
     <div>
-      <>
-        {children}||
-        <Outlet />
-      </>
+      <>{children || <Outlet />}</>
     </div>
   );
 };

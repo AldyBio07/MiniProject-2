@@ -3,35 +3,40 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../../components/Navbar";
 import { Link } from "react-router-dom";
-
 import Footer from "../../components/Footer";
 
 const ListUser = () => {
   const [user, setUser] = useState([]);
 
-  const [pagination, setPagination] = useState({
-    page: 2,
-    per_page: 6,
-    total: null,
-    prevPage: null,
-    nexPage: null,
+  const [edit, setEdit] = useState({
+    name: "",
+    job: "",
   });
-  const [search, setSearch] = useState("");
+
+  const [pagination, setPagination] = useState({
+    page: 1,
+    per_page: 2,
+    total: null,
+    total_pages: null,
+    prevPage: null,
+    nextPage: null,
+  });
 
   const getUserList = () => {
     axios
       .get(
-        `https://reqres.in/api/users?page=${pagination.page}&per_page=${pagination.per_page}&search=${search}`
+        `https://reqres.in/api/users?page=${pagination.page}&per_page=${pagination.per_page}`
       )
       .then((res) => {
         setUser(res.data.data);
-        console.log(res.data);
+
         setPagination({
-          page: res.data.data.currentPage,
-          per_page: res.data.data.per_page,
-          total: res.data.data.total,
-          prevPage: res.data.data.previousPage,
-          nexPage: res.data.data.nextPage,
+          page: res.data.page,
+          per_page: res.data.per_page,
+          total: res.data.total,
+          total_pages: res.data.total_pages,
+          prevPage: res.data.prev_page,
+          nextPage: res.data.next_page,
         });
       })
       .catch((err) => {
@@ -40,26 +45,23 @@ const ListUser = () => {
   };
 
   const handleDelete = async (id) => {
-    const token = localStorage.getItem("access_token");
-    const config = {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
     try {
-      const response = await axios.delete(
-        `https://api.mudoapi.site/menu/${id}`,
-        config
-      );
+      const response = await axios.delete(`https://reqres.in/api/users/${id}`);
       getUserList();
+      console.log(response);
+      alert("Delete Success");
     } catch (error) {
       console.log(error?.response);
     }
   };
 
+  const handleEdit = (id) => {
+    axios.put(`https://reqres.in/api/users/${id}`);
+  };
+
   useEffect(() => {
     getUserList();
-  }, [pagination.page, search]);
+  }, [pagination.page]);
 
   const handleNext = () => {
     setPagination({
@@ -75,12 +77,20 @@ const ListUser = () => {
     });
   };
 
-  console.log(pagination);
   return (
     <div className="bg-gray-600">
       <Navbar />
       <h1>Home Page</h1>
       <p className="text-center text-7xl">User List</p>
+
+      <Link to="/create">
+        <button
+          className="w-20 h-10 mx-5 text-white bg-black rounded"
+          onClick={handleEdit}
+        >
+          Add User
+        </button>
+      </Link>
 
       <div>
         <button
@@ -90,9 +100,12 @@ const ListUser = () => {
         >
           back
         </button>
+        <p>
+          {pagination.page}/{pagination.total_pages}
+        </p>
         <button
           className="w-20 h-10 text-white bg-black rounded"
-          disabled={!pagination.nexPage}
+          disabled={pagination.page === pagination.total_pages}
           onClick={handleNext}
         >
           next
@@ -105,7 +118,7 @@ const ListUser = () => {
             key={user.id}
             style={{ display: "flex", marginBottom: 40 }}
           >
-            <p>{idx + 1}</p>
+            {/* <p>{idx + 1}</p> */}
             <p className="text-2xl text-color-primary">{`${user.first_name} ${user.last_name}`}</p>
             <p>{user.email}</p>
             <img
@@ -118,6 +131,11 @@ const ListUser = () => {
             <Link to={`/menu-detail/${user.id}`}>
               <button className="w-20 h-10 my-5 text-black bg-green-300 rounded">
                 detail
+              </button>
+            </Link>
+            <Link to={`/edit-user/${user.id}`}>
+              <button className="w-20 h-10 my-5 text-black bg-green-300 rounded">
+                edit
               </button>
             </Link>
             <button

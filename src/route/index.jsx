@@ -5,6 +5,8 @@ import DetailMenuPage from "../pages/DetailMenuPage";
 import MenuPage from "../pages/MenuPage";
 import ProtectedRoute from "./ProtectedRoute";
 import ListUser from "../pages/ListUser";
+import EditPage from "../pages/EditUser";
+import CreateUser from "../pages/CreateUser";
 
 export const route = [
   {
@@ -28,10 +30,26 @@ export const route = [
     ),
   },
   {
+    path: "/create",
+    element: (
+      <ProtectedRoute>
+        <CreateUser />
+      </ProtectedRoute>
+    ),
+  },
+  {
     path: "/listuser",
     element: (
       <ProtectedRoute>
         <ListUser />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/edit-user/:id",
+    element: (
+      <ProtectedRoute>
+        <EditPage />
       </ProtectedRoute>
     ),
   },
