@@ -2,19 +2,19 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 const LandingPage = () => {
   return (
-    <div>
+    <div className="bg-gray-100 dark:bg-gray-900">
       <Navbar />
-      {/* JUMBOTRON */}
-      <section className="bg-white dark:bg-gray-900">
-        <div className="max-w-screen-xl px-4 py-8 mx-auto lg:py-16">
-          <div className="p-8 mb-8 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 md:p-12">
+
+      {/* Jumbotron Section */}
+      <section className="relative py-16 bg-white dark:bg-gray-900 lg:py-24">
+        <div className="px-4 mx-auto max-w-7xl lg:px-8">
+          <div className="relative z-10 p-8 border border-gray-200 rounded-lg shadow-xl bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
             <a
               href="#"
-              className="bg-blue-100 text-blue-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-blue-400 mb-2"
+              className="inline-flex items-center px-3 py-1 mb-4 text-xs font-semibold text-blue-800 transition-colors duration-300 bg-blue-100 rounded-md dark:bg-gray-700 dark:text-blue-400 hover:bg-blue-200"
             >
               <svg
-                className="w-2.5 h-2.5 me-1.5"
-                aria-hidden="true"
+                className="w-3 h-3 mr-2"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="currentColor"
                 viewBox="0 0 20 14"
@@ -23,24 +23,20 @@ const LandingPage = () => {
               </svg>
               Tutorial
             </a>
-            <h1 className="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl">
+            <h1 className="text-4xl font-extrabold leading-tight text-gray-900 dark:text-white md:text-6xl">
               Reqres API
             </h1>
-            <p className="mb-6 text-lg font-normal text-gray-500 dark:text-gray-400">
-              Reqres simulates real application scenarios. If you want to test a
-              user authentication system, Reqres will respond to a successful
-              login/register request with a token for you to identify a sample
-              user, or with a 403 forbidden response to an unsuccessful
-              login/registration attempt.
+            <p className="mt-4 text-lg font-normal leading-relaxed text-gray-600 dark:text-gray-400">
+              Reqres simulates real-world application scenarios. Use it to test
+              authentication, user creation, and much more.
             </p>
             <a
               href="#"
-              className="inline-flex justify-center items-center py-2.5 px-5 text-base font-medium text-center text-white rounded-lg bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-900"
+              className="inline-flex items-center px-6 py-3 mt-6 text-white transition duration-300 ease-in-out bg-blue-600 rounded-lg shadow-lg hover:bg-blue-700 focus:ring-4 focus:ring-blue-300"
             >
               Read more
               <svg
-                className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
-                aria-hidden="true"
+                className="w-4 h-4 ml-2"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 14 10"
@@ -55,106 +51,108 @@ const LandingPage = () => {
               </svg>
             </a>
           </div>
-          <div className="grid gap-8 md:grid-cols-2">
-            <div className="p-8 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 md:p-12">
-              <a
-                href="#"
-                className="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2"
+        </div>
+      </section>
+
+      {/* Features Section */}
+      <section className="py-16 bg-gray-50 dark:bg-gray-900">
+        <div className="grid gap-8 px-4 mx-auto max-w-7xl lg:px-8 lg:grid-cols-2">
+          {/* Feature 1 */}
+          <div className="p-8 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a
+              href="#"
+              className="inline-flex items-center px-3 py-1 mb-4 text-xs font-semibold text-green-800 transition-colors duration-300 bg-green-100 rounded-md dark:bg-gray-700 dark:text-green-400 hover:bg-green-200"
+            >
+              <svg
+                className="w-3 h-3 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="currentColor"
+                viewBox="0 0 18 18"
               >
-                <svg
-                  className="w-2.5 h-2.5 me-1.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="currentColor"
-                  viewBox="0 0 18 18"
-                >
-                  <path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z" />
-                </svg>
-                Design
-              </a>
-              <h2 className="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white">
-                Fake Data
-              </h2>
-              <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
-                Fake data is data that is used for testing or prototyping. It is
-                not intended to be used in production.
-              </p>
-              <a
-                href="#"
-                className="inline-flex items-center text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                <path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z" />
+              </svg>
+              Design
+            </a>
+            <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white">
+              Fake Data
+            </h2>
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+              Use fake data to test your app without impacting real users.
+              Perfect for prototyping!
+            </p>
+            <a
+              href="#"
+              className="inline-flex items-center mt-6 text-blue-600 dark:text-blue-500 hover:underline"
+            >
+              Learn more
+              <svg
+                className="w-4 h-4 ml-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
               >
-                Read more
-                <svg
-                  className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div className="p-8 border border-gray-200 rounded-lg bg-gray-50 dark:bg-gray-800 dark:border-gray-700 md:p-12">
-              <a
-                href="#"
-                className="bg-purple-100 text-purple-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-purple-400 mb-2"
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </a>
+          </div>
+
+          {/* Feature 2 */}
+          <div className="p-8 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a
+              href="#"
+              className="inline-flex items-center px-3 py-1 mb-4 text-xs font-semibold text-purple-800 transition-colors duration-300 bg-purple-100 rounded-md dark:bg-gray-700 dark:text-purple-400 hover:bg-purple-200"
+            >
+              <svg
+                className="w-3 h-3 mr-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 16"
               >
-                <svg
-                  className="w-2.5 h-2.5 me-1.5"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 20 16"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"
-                  />
-                </svg>
-                Code
-              </a>
-              <h2 className="mb-2 text-3xl font-extrabold text-gray-900 dark:text-white">
-                Always On
-              </h2>
-              <p className="mb-4 text-lg font-normal text-gray-500 dark:text-gray-400">
-                24/7 support. Always on. No matter where you are.
-              </p>
-              <a
-                href="#"
-                className="inline-flex items-center text-lg font-medium text-blue-600 dark:text-blue-500 hover:underline"
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"
+                />
+              </svg>
+              Code
+            </a>
+            <h2 className="text-2xl font-extrabold text-gray-900 dark:text-white">
+              Always On
+            </h2>
+            <p className="mt-4 text-lg text-gray-600 dark:text-gray-400">
+              24/7 support. We are here to assist you, anytime, anywhere.
+            </p>
+            <a
+              href="#"
+              className="inline-flex items-center mt-6 text-blue-600 dark:text-blue-500 hover:underline"
+            >
+              Learn more
+              <svg
+                className="w-4 h-4 ml-2"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 14 10"
               >
-                Read more
-                <svg
-                  className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 14 10"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M1 5h12m0 0L9 1m4 4L9 9"
-                  />
-                </svg>
-              </a>
-            </div>
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M1 5h12m0 0L9 1m4 4L9 9"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
-      {/* ACCORDION */}
 
       <Footer />
     </div>

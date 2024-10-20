@@ -1,7 +1,7 @@
 import HomePage from "../pages/HomePage";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import DetailMenuPage from "../pages/DetailMenuPage";
+import DetailUser from "../pages/DetailUser";
 import MenuPage from "../pages/MenuPage";
 import ProtectedRoute from "./ProtectedRoute";
 import ListUser from "../pages/ListUser";
@@ -61,7 +61,7 @@ export const route = [
     path: "/menu-detail/:id",
     element: (
       <ProtectedRoute>
-        <DetailMenuPage />
+        <DetailUser />
       </ProtectedRoute>
     ),
   },

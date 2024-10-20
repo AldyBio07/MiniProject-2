@@ -78,77 +78,87 @@ const ListUser = () => {
   };
 
   return (
-    <div className="bg-gray-600">
+    <div className="min-h-screen bg-gray-100">
       <Navbar />
-      <p className="text-center text-7xl my-7">User List</p>
+      <p className="text-6xl font-bold text-center text-gray-800 my-7">
+        User List
+      </p>
 
-      <div className="flex justify-center">
+      {/* Pagination Controls */}
+      <div className="flex items-center justify-center my-5 space-x-6">
         <button
-          className="w-20 h-10 text-white bg-black rounded"
+          className={`w-24 h-10 text-white rounded-full transition-all ${
+            pagination.page === 1
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-black hover:bg-gray-800"
+          }`}
           disabled={pagination.page === 1}
           onClick={handleBack}
         >
-          back
+          Back
         </button>
-        <h3 className="justify-center mx-5 text-3xl text-center align-center">
+        <span className="text-2xl text-gray-800">
           {pagination.page}/{pagination.total_pages}
-        </h3>
+        </span>
         <button
-          className="w-20 h-10 text-white bg-black rounded"
+          className={`w-24 h-10 text-white rounded-full transition-all ${
+            pagination.page === pagination.total_pages
+              ? "bg-gray-400 cursor-not-allowed"
+              : "bg-black hover:bg-gray-800"
+          }`}
           disabled={pagination.page === pagination.total_pages}
           onClick={handleNext}
         >
-          next
+          Next
         </button>
       </div>
-      <div className="flex justify-center my-14">
+
+      {/* Add User Button */}
+      <div className="flex justify-center my-10">
         <Link to="/create">
-          <button
-            className="justify-center w-20 h-10 mx-5 text-white bg-black rounded align-center"
-            onClick={handleEdit}
-          >
+          <button className="w-40 h-12 text-white transition-all bg-indigo-600 rounded-lg hover:bg-indigo-800">
             Add User
           </button>
         </Link>
       </div>
 
-      <div className="justify-center ">
-        <div className="grid grid-cols-1 sm:grid-cols-3">
-          {user.map((user, idx) => {
-            return (
-              <div
-                className="flex flex-col items-center justify-center mx-auto my-10"
-                key={user.id}
-                style={{ display: "flex", marginBottom: 40 }}
-              >
-                <p className="text-2xl text-color-primary">{`${user.first_name} ${user.last_name}`}</p>
-                <p>{user.email}</p>
-                <img
-                  className="w-32 h-32 rounded-full align-center"
-                  width={200}
-                  height={200}
-                  src={user.avatar}
-                  alt={`${user.first_name} ${user.last_name}`}
-                />
+      {/* User Cards Grid */}
+      <div className="container px-4 py-6 mx-auto">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3">
+          {user.map((user) => (
+            <div
+              key={user.id}
+              className="p-6 transition-all bg-white rounded-lg shadow-lg hover:shadow-2xl hover:scale-105"
+            >
+              <img
+                className="object-cover w-32 h-32 mx-auto mb-4 rounded-full"
+                src={user.avatar}
+                alt={`${user.first_name} ${user.last_name}`}
+              />
+              <h2 className="text-xl font-semibold text-center text-gray-800">
+                {`${user.first_name} ${user.last_name}`}
+              </h2>
+              <p className="text-center text-gray-500">{user.email}</p>
+              <div className="flex justify-around mt-6">
                 <Link to={`/menu-detail/${user.id}`}>
-                  <button className="w-20 h-10 my-5 text-black bg-green-300 rounded">
-                    detail
+                  <button className="w-24 h-10 text-white transition-all bg-blue-500 rounded-lg hover:bg-blue-700">
+                    Detail
                   </button>
                 </Link>
                 <Link to={`/edit-user/${user.id}`}>
-                  <button className="w-20 h-10 my-5 text-black bg-green-300 rounded">
-                    edit
+                  <button className="w-24 h-10 text-white transition-all bg-green-500 rounded-lg hover:bg-green-700">
+                    Edit
                   </button>
                 </Link>
                 <button
-                  className="w-20 h-10 text-black bg-red-500 rounded"
+                  className="w-24 h-10 text-white transition-all bg-red-500 rounded-lg hover:bg-red-700"
                   onClick={() => handleDelete(user.id)}
                 >
-                  delete
+                  Delete
                 </button>
               </div>
-            );
-          })}
+            </div>
+          ))}
         </div>
       </div>
 

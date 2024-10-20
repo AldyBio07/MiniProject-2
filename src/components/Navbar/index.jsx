@@ -12,43 +12,46 @@ const Navbar = () => {
   const token = localStorage.getItem("access_token");
 
   return (
-    <div className="flex justify-center gap-5 ">
-      <div></div>
-      <Link to="/">
-        <button className="w-20 h-10 mt-6 text-black bg-blue-300 rounded">
-          Home
-        </button>
-      </Link>
-      <Link to="/listuser">
-        <button className="w-20 h-10 mt-6 text-black bg-blue-300 rounded">
-          List User
-        </button>
-      </Link>
-      {token ? (
-        ""
-      ) : (
-        <Link to="/register">
-          <button className="w-20 h-10 mt-6 text-black bg-blue-300 rounded">
-            Register
-          </button>
-        </Link>
-      )}
-
-      {localStorage.getItem("access_token") ? (
-        <button
-          className="w-20 h-10 mt-6 text-black bg-red-300 rounded"
-          onClick={handleLogout}
-        >
-          Logout
-        </button>
-      ) : (
-        <Link to="/login">
-          <button className="w-20 h-10 mt-6 text-black bg-green-300 rounded">
-            Login
-          </button>
-        </Link>
-      )}
-    </div>
+    <nav className="py-4 bg-gray-800 shadow-lg">
+      <div className="container flex items-center justify-between px-6 mx-auto">
+        <div className="text-2xl font-semibold text-white">
+          <Link to="/">Aldy</Link>
+        </div>
+        <div className="flex items-center space-x-4">
+          <Link to="/">
+            <button className="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-600">
+              Home
+            </button>
+          </Link>
+          <Link to="/listuser">
+            <button className="px-4 py-2 text-white transition duration-300 bg-blue-500 rounded hover:bg-blue-600">
+              User List
+            </button>
+          </Link>
+          {!token && (
+            <Link to="/register">
+              <button className="px-4 py-2 text-white transition duration-300 bg-yellow-500 rounded hover:bg-yellow-600">
+                Register
+              </button>
+            </Link>
+          )}
+          {token ? (
+            <button
+              className="px-4 py-2 text-white transition duration-300 bg-red-500 rounded hover:bg-red-600"
+              onClick={handleLogout}
+            >
+              Logout
+            </button>
+          ) : (
+            <Link to="/login">
+              <button className="px-4 py-2 text-white transition duration-300 bg-green-500 rounded hover:bg-green-600">
+                Login
+              </button>
+            </Link>
+          )}
+        </div>
+      </div>
+    </nav>
   );
 };
 
